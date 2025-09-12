@@ -1,5 +1,10 @@
 # CLA3GC: Linear time Attributed Graph Clustering via Collaborative Learning of Adaptive Anchors
 
+
+## 🚀 Run
+
+You can modify the dataset name in the __main__ block of CLA3GC.py, and run directly.
+
 ## 🧩 Features
 
 ### 1. Graph Filtering for Enhanced Grouping Effect
@@ -68,11 +73,6 @@ For other datasets, please contact the authors via guog92764@gmail.com
 | AMAC | 13,381 | 259,159 | 767/13,381 | 10 |
 | OGBN-Arxiv | 169,343 | 1,327,142 | 128 | 40 |
 | OGBN-Products | 2,449,029 | 61,859,140 | 100 | 47 |
-
-## 🚀 Run Clustering
-
-You can modify the dataset name in the __main__ block of CLA3GC.py, and run directly.
-
 
 ## 📜 License
 
