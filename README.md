@@ -4,7 +4,7 @@ This is the code of paper: Linear-time Attributed Graph Clustering via Collabora
 
 ## 🚀 Run $CLA^3GC$
 
-You can modify the `dataname` in the __main__ block of CLA3GC.py, and run directly.
+You can modify the `dataname` in the \_\_main\_\_ block of CLA3GC.py, and run directly.
 
 ## 🧩 Framework
 
