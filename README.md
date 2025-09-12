@@ -29,13 +29,22 @@
 
 ## 🗂️ Supported Datasets
 
-### Single-view Graphs
-Cora
-
-### Topological Multi-view Graphs
-ACM
-
-### Attribute Multi-view Graphs
-AMAP
+Single-view Graphs: `Cora`
+Topological Multi-view Graphs: `ACM`
+Attribute Multi-view Graphs: `AMAP`
 
 For other datasets, please contact the authors via guog92764@gmail.com
+
+## 🚀 Run Clustering
+
+You can modify the dataset name in the __main__ block of CLA3GC.py, and run directly.
+
+
+## 📜 License
+
+This project is for academic use only. Please contact the authors for commercial use.
+
+
+
+
+
