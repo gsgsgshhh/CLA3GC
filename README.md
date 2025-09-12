@@ -1,5 +1,19 @@
 # CLA3GC---Linear-time-Attributed-Graph-Clustering-via-Collaborative-Learning-of-Adaptive-Anchors
 
+## 🧩 Features
+
+- Graph Filtering: Low-pass filtering for noise reduction and feature smoothing.
+
+- Anchor Sampling: K-means and mini-batch K-means for efficient anchor selection.
+
+- Multi-view Support: Handles multi-attribute and multi-relational graphs.
+
+- Efficient Optimization: Iterative optimization of anchor and representation matrices.
+
+- Evaluation Metrics: ACC, NMI, ARI, F1, and Purity for clustering performance.
+
+## 📦 Project Structure
+
 ```
 .
 ├── CLA3GC.py                 # Main training and reproduction script
@@ -12,3 +26,16 @@
 ├── utils.py                  # Normalization and dimension reduction utilities
 └── README.md
 ```
+
+## 🗂️ Supported Datasets
+
+### Single-view Graphs
+Cora
+
+### Topological Multi-view Graphs
+ACM
+
+### Attribute Multi-view Graphs
+AMAP
+
+For other datasets, please contact the authors via guog92764@gmail.com
