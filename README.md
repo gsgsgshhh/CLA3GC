@@ -3,7 +3,7 @@
 
 ## 🚀 Run
 
-You can modify the dataset name in the __main__ block of CLA3GC.py, and run directly.
+You can modify the `dataname` in the __main__ block of CLA3GC.py, and run directly.
 
 ## 🧩 Features
 
