@@ -2,7 +2,6 @@ import numpy as np
 import os
 import scipy.sparse as sp
 
-# 从邻接矩阵中删掉自环
 def eliminate_self_loops1(A):
     A = A.tolil()
     A.setdiag(0)
@@ -10,7 +9,6 @@ def eliminate_self_loops1(A):
     A.eliminate_zeros()
     return A
 
-# 选择图中最大的连通分量
 def largest_connected_components(sparse_graph, n_components=1):
     _, component_indices = sp.csgraph.connected_components(sparse_graph.adj_matrix)
     component_sizes = np.bincount(component_indices)
@@ -20,7 +18,6 @@ def largest_connected_components(sparse_graph, n_components=1):
     ]
     return create_subgraph(sparse_graph, nodes_to_keep=nodes_to_keep)
 
-# 用指定的节点子集创建一个图
 def create_subgraph(sparse_graph, _sentinel=None, nodes_to_remove=None, nodes_to_keep=None):
     if _sentinel is not None:
         raise ValueError("Only call `create_subgraph` with named arguments',"
@@ -35,7 +32,6 @@ def create_subgraph(sparse_graph, _sentinel=None, nodes_to_remove=None, nodes_to
         nodes_to_keep = sorted(nodes_to_keep)
     else:
         raise RuntimeError("This should never happen.")
-
     sparse_graph.adj_matrix = sparse_graph.adj_matrix[nodes_to_keep][:, nodes_to_keep]
     if sparse_graph.attr_matrix is not None:
         sparse_graph.attr_matrix = sparse_graph.attr_matrix[nodes_to_keep]
@@ -45,7 +41,6 @@ def create_subgraph(sparse_graph, _sentinel=None, nodes_to_remove=None, nodes_to
         sparse_graph.node_names = sparse_graph.node_names[nodes_to_keep]
     return sparse_graph
 
-# 以稀疏矩阵形式存储的有属性标签图
 class SparseGraph:
     def __init__(self, adj_matrix, attr_matrix=None, labels=None,
         node_names=None, attr_names=None, class_names=None, metadata=None):
@@ -54,10 +49,8 @@ class SparseGraph:
         else:
             raise ValueError("Adjacency matrix must be in sparse format (got {0} instead)"
                              .format(type(adj_matrix)))
-
         if adj_matrix.shape[0] != adj_matrix.shape[1]:
             raise ValueError("Dimensions of the adjacency matrix don't agree")
-
         if attr_matrix is not None:
             if sp.isspmatrix(attr_matrix):
                 attr_matrix = attr_matrix.tocsr().astype(np.float32)
@@ -69,19 +62,15 @@ class SparseGraph:
 
             if attr_matrix.shape[0] != adj_matrix.shape[0]:
                 raise ValueError("Dimensions of the adjacency and attribute matrices don't agree")
-
         if labels is not None:
             if labels.shape[0] != adj_matrix.shape[0]:
                 raise ValueError("Dimensions of the adjacency matrix and the label vector don't agree")
-
         if node_names is not None:
             if len(node_names) != adj_matrix.shape[0]:
                 raise ValueError("Dimensions of the adjacency matrix and the node names don't agree")
-
         if attr_names is not None:
             if len(attr_names) != attr_matrix.shape[1]:
                 raise ValueError("Dimensions of the attribute matrix and the attribute names don't agree")
-
         self.adj_matrix = adj_matrix
         self.attr_matrix = attr_matrix
         self.labels = labels
@@ -89,19 +78,19 @@ class SparseGraph:
         self.attr_names = attr_names
         self.class_names = class_names
         self.metadata = metadata
-
+            
     def num_nodes(self):
         return self.adj_matrix.shape[0]
-
+        
     def num_edges(self):
         if self.is_directed():
             return int(self.adj_matrix.nnz)
         else:
             return int(self.adj_matrix.nnz / 2)
-
+            
     def get_neighbors(self, idx):
         return self.adj_matrix[idx].indices
-
+        
     def is_directed(self):
         return (self.adj_matrix != self.adj_matrix.T).sum() != 0
 
@@ -146,7 +135,6 @@ def load_npz_to_sparse_graph(file_name):
         loader = dict(loader)
         adj_matrix = sp.csr_matrix((loader['adj_data'], loader['adj_indices'], loader['adj_indptr']),
                                    shape=loader['adj_shape'])
-
         if 'attr_data' in loader:
             attr_matrix = sp.csr_matrix((loader['attr_data'], loader['attr_indices'], loader['attr_indptr']),
                                         shape=loader['attr_shape'])
@@ -162,11 +150,10 @@ def load_npz_to_sparse_graph(file_name):
             labels = loader['labels']
         else:
             labels = None
-
         node_names = loader.get('node_names')
         attr_names = loader.get('attr_names')
         class_names = loader.get('class_names')
         metadata = loader.get('metadata')
-
     return SparseGraph(adj_matrix, attr_matrix, labels, node_names, attr_names, class_names, metadata)
+
 
