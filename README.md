@@ -12,6 +12,11 @@
 
 - Evaluation Metrics: ACC, NMI, ARI, F1, and Purity for clustering performance.
 
+
+<img width="1534" height="398" alt="image" src="https://github.com/user-attachments/assets/936e90b7-15fa-4cd9-9ff1-92fee369e047" />
+
+
+
 ## 📦 Project Structure
 
 ```
