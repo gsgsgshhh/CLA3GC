@@ -3,8 +3,6 @@ from utils import normalize_matrix
 from scipy.sparse import csr_matrix
 from utils import dimension_reduction
 
-
-# 小规模属性图的低通滤波器（X：原始特征矩阵；A：邻接矩阵；k1：滤波器的阶数；p：滤波器参数；）
 def LowPassFilter(X, A, k1, p=0.5):
     I = np.eye(A.shape[0])
     S = A + I
@@ -15,7 +13,6 @@ def LowPassFilter(X, A, k1, p=0.5):
     H_low = FMk.dot(X)
     return H_low
 
-# 大规模属性图的低通滤波器（带有稀疏矩阵）
 def LowPassFilter_sparse(X, A, Dr, k1, p=0.5):
     N = X.shape[0]
     row_I = np.arange(N)
@@ -29,8 +26,6 @@ def LowPassFilter_sparse(X, A, Dr, k1, p=0.5):
     S = A + I
     S = csr_matrix(S)
     S = D * S * D
-
-    # I - p * L_S = I - p * (I - S) = (1-p)I + pS
     F_M = (1 - p) * I + p * S
     H_low = F_M * X
     f_order = k1 - 1
@@ -42,11 +37,9 @@ def LowPassFilter_sparse(X, A, Dr, k1, p=0.5):
 
 def multi_view_processing(X, A, Dr, k=2, dims=100):
     try:
-
         lenX = len(X)
         lenA = len(A)
         H = []
-
         if lenX > lenA:
             for x in X:
                 if x.shape[1] >= dims:
@@ -69,3 +62,4 @@ def multi_view_processing(X, A, Dr, k=2, dims=100):
     except Exception as e:
         print("Error: {}".format(e))
         return
+
