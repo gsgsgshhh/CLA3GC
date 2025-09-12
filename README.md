@@ -1,4 +1,4 @@
-# CLA3GC: Linear time Attributed Graph Clustering via Collaborative Learning of Adaptive Anchors
+# $CLA^3GC$: Linear time Attributed Graph Clustering via Collaborative Learning of Adaptive Anchors
 
 This is the code of paper: Linear-time Attributed Graph Clustering via Collaborative Learning of Adaptive Anchors.
 
