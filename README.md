@@ -2,16 +2,33 @@
 
 ## 🧩 Features
 
-- Graph Filtering: Low-pass filtering for noise reduction and feature smoothing.
+### 1. Graph Filtering for Enhanced Grouping Effect
+- **Purpose**: Enhance the grouping effect of subspace clustering through low-pass graph filtering
+- **Implementation**: 
+  - `graph_filtering.py` - Contains `LowPassFilter()` and `LowPassFilter_sparse()` functions
+  - `multi_view_processing()` function handles multi-view graph filtering
+  - Applies spectral graph theory to smooth node features and reduce noise
 
-- Anchor Sampling: K-means and mini-batch K-means for efficient anchor selection.
+### 2. Collaborative Anchor Learning (CAL) Strategy
+- **Purpose**: Jointly learn high-quality anchors and self-representation matrix for accurate affinity modeling
+- **Implementation**:
+  - `anchor.py` - Implements anchor sampling via `sampling_kmeans()` and `sampling_minikmeans()`
+  - `clustering.py` - Contains `Effecient_clustering()` and `New_Effecient_clustering()` for joint optimization
+  - Alternates between updating anchor points (B) and representation matrix (S)
 
-- Multi-view Support: Handles multi-attribute and multi-relational graphs.
+### 3. View-Adaptive Anchor Learning (VAAL) for Multi-view Scenarios
+- **Purpose**: Capture both view-specific characteristics and cross-view consistency
+- **Implementation**:
+  - `clustering.py` - `Effecient_multi_view_clustering()` function handles multi-view optimization
+  - Adaptive weight learning (`omiga` parameters) for view importance
+  - Joint optimization across multiple graph views
 
-- Efficient Optimization: Iterative optimization of anchor and representation matrices.
-
-- Evaluation Metrics: ACC, NMI, ARI, F1, and Purity for clustering performance.
-
+### 4. Efficient Clustering Based on Self-representation
+- **Purpose**: Obtain final node partitions from learned self-representation matrix
+- **Implementation**:
+  - `metrics.py` - `evaluate_clustering()` performs SVD and k-means on representation matrix
+  - Supports both standard KMeans and MiniBatchKMeans for large-scale graphs
+  - Comprehensive evaluation with multiple metrics (ACC, NMI, ARI, F1, PUR)
 
 <img width="1534" height="398" alt="image" src="https://github.com/user-attachments/assets/936e90b7-15fa-4cd9-9ff1-92fee369e047" />
 
