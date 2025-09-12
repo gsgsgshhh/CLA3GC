@@ -35,7 +35,7 @@ class clagc():
         if self.data_name in ["ACM", "DBLP"]:
             X, As, Drs, gnd = self.datasets["multi-relational"](self.data_name)
             self.data_type = 'multi-relational '+ self.data_type
-        elif self.data_name in ["Pubmed", "Citeseer", "Cora", "Products", "Papers100M", "ArXiv"]:
+        elif self.data_name in ["Pubmed", "Citeseer", "Cora", "ArXiv"]:
             X, As, Drs, gnd = self.datasets["single-view"](self.data_name)
             self.data_type = 'single-view ' + self.data_type
         elif self.data_name in ["AMAP", "AMAC"]:
@@ -127,6 +127,7 @@ if __name__ == "__main__":
     res = clagc(dataname=dataname)
     res.train()
     res.reproduce()
+
 
 
 
