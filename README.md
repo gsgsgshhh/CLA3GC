@@ -38,6 +38,10 @@
 
 ```
 .
+├── data
+      ├── npz
+      ├── ogb
+      ├── mat
 ├── CLA3GC.py                 # Main training and reproduction script
 ├── anchor.py                 # Anchor sampling methods (k-means, mini-batch, random)
 ├── clustering.py             # Clustering algorithms (single/multi-view)
