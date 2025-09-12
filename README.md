@@ -8,7 +8,7 @@ You can modify the `dataname` in the \_\_main\_\_ block of CLA3GC.py, and run di
 
 ## 🧩 Framework
 
-The framework of CLA3GC is shown in the following figure.
+The framework of $CLA^3GC$ is shown in the following figure.
 
 <img width="1534" height="398" alt="image" src="https://github.com/user-attachments/assets/936e90b7-15fa-4cd9-9ff1-92fee369e047" />
 
