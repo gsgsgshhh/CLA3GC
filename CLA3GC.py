@@ -7,11 +7,13 @@ from metrics import evaluate_clustering
 import pandas as pd
 import time
 
+# Ablation 3
 class clagc():
     def __init__(self, dataname="Citeseer"):
         self.datasets = datasets
         self.alphas = [0.001, 1, 10, 100, 1000, 10000]
         self.betas = [0.001, 1, 10, 100, 1000, 10000]
+        # self.gammas = [0.001, 1, 10, 100, 1000, 10000]
         self.data_name = dataname
         self.data_type = 'graph data'
         self.max_dims = 1300
@@ -127,6 +129,7 @@ if __name__ == "__main__":
     res = clagc(dataname=dataname)
     res.train()
     res.reproduce()
+
 
 
 
